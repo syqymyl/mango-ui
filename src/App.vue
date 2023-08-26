@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Row gutter="20">
+    <Row :gutter="20">
       <Col>1</Col>
       <Col>2</Col>
     </Row>

@@ -2,6 +2,7 @@
   <div
     class="col"
     :class="[span && `col-${span}`, offset && `offset-${offset}`]"
+    :style="{ paddingLeft: gutter / 2 + 'px', paddingRight: gutter / 2 + 'px' }"
   >
     <div style="border: 1px solid green; height: 100px">
       <slot></slot>
@@ -12,6 +13,11 @@
 <script>
 export default {
   name: 'Col',
+  data() {
+    return {
+      gutter: 0,
+    }
+  },
   props: {
     span: {
       type: Number,
@@ -19,16 +25,6 @@ export default {
     offset: {
       type: Number,
     },
-    gutter: {
-      type: Number,
-      default: 0,
-    },
-  },
-  created() {
-    console.log('col created')
-  },
-  mounted() {
-    console.log('col mounted')
   },
 }
 </script>
