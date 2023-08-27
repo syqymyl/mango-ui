@@ -1,6 +1,6 @@
 <template>
   <div class="col" :class="colClass" :style="colStyle">
-    <div style="border: 1px solid green; height: 100px">
+    <div style="border: 1px solid red; height: 100px">
       <slot></slot>
     </div>
   </div>
@@ -18,7 +18,7 @@ export default defineComponent({
     },
   },
   setup(props, context) {
-    const { span, offset } = props
+    let { span, offset } = props
     const colClass = computed(() => {
       return [span && `col-${span}`, offset && `offset-${offset}`]
     })
