@@ -26,12 +26,11 @@ export default defineComponent({
     ipad: { type: Object, validator },
     narrowPc: { type: Object, validator },
     pc: { type: Object, validator },
-    widePc: { type: Object, validator },
   },
 
   setup(props, context) {
     const colClass = computed(() => {
-      let { span, offset, phone, ipad, narrowPc, pc, widePc } = props
+      let { span, offset, phone, ipad, narrowPc, pc } = props
       return [
         span && `col-${span}`,
         offset && `offset-${offset}`,
@@ -39,7 +38,6 @@ export default defineComponent({
         ...(ipad && [`col-ipad-${ipad.span}`]),
         ...(narrowPc && [`col-narrow-pc-${narrowPc.span}`]),
         ...(pc && [`col-pc-${pc.span}`]),
-        ...(widePc && [`col-wide-pc-${widePc.span}`]),
       ]
     })
 
@@ -125,20 +123,6 @@ export default defineComponent({
       }
     }
     $class-prefix: offset-pc-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        margin-left: calc($n/24) * 100%;
-      }
-    }
-  }
-  @media (min-width: 1201px) {
-    $class-prefix: col-wide-pc-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        width: calc($n/24) * 100%;
-      }
-    }
-    $class-prefix: offset-wide-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
         margin-left: calc($n/24) * 100%;
