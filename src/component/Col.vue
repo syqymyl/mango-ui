@@ -1,5 +1,5 @@
 <template>
-  <div class="col" :class="colClass" :style="colStyle" :phone="phoneClass">
+  <div class="col" :class="colClass" :style="colStyle">
     <div style="border: 1px solid red; height: 100px">
       <slot></slot>
     </div>
@@ -8,40 +8,38 @@
 
 <script>
 import { computed, defineComponent, inject } from 'vue'
+let validator = (value) => {
+  let keys = Object.keys(value)
+  let valid = true
+  keys.forEach((key) => {
+    if (!['span', 'offset'].includes(key)) {
+      valid = false
+    }
+  })
+  return valid
+}
 export default defineComponent({
   props: {
-    span: {
-      type: Number,
-    },
-    offset: {
-      type: Number,
-    },
-    phone: {
-      type: Object,
-      validator(value) {
-        let keys = Object.keys(value)
-        let valid = true
-        keys.forEach((key) => {
-          if (!['span', 'offset'].includes(key)) {
-            valid = false
-          }
-        })
-        return valid
-      },
-    },
+    span: { type: Number },
+    offset: { type: Number },
+    phone: { type: Object, validator },
+    ipad: { type: Object, validator },
+    narrowPc: { type: Object, validator },
+    pc: { type: Object, validator },
+    widePc: { type: Object, validator },
   },
 
   setup(props, context) {
     const colClass = computed(() => {
-      let { span, offset, phone } = props
-      let phoneClass = []
-      if (phone) {
-        phoneClass = [`col-phone-${phone.span}`]
-      }
+      let { span, offset, phone, ipad, narrowPc, pc, widePc } = props
       return [
         span && `col-${span}`,
         offset && `offset-${offset}`,
-        ...phoneClass,
+        ...(phone && [`col-phone-${phone.span}`]),
+        ...(ipad && [`col-ipad-${ipad.span}`]),
+        ...(narrowPc && [`col-narrow-pc-${narrowPc.span}`]),
+        ...(pc && [`col-pc-${pc.span}`]),
+        ...(widePc && [`col-wide-pc-${widePc.span}`]),
       ]
     })
 
@@ -52,6 +50,7 @@ export default defineComponent({
     return {
       colClass,
       colStyle,
+      validator,
     }
   },
 })

@@ -9,10 +9,7 @@ import { computed, provide } from 'vue'
 export default {
   name: 'Row',
   props: {
-    gutter: {
-      type: Number,
-      default: 0,
-    },
+    gutter: { type: Number, default: 0 },
   },
   setup(props, context) {
     const { gutter } = props
