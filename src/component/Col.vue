@@ -1,5 +1,5 @@
 <template>
-  <div class="col" :class="colClass" :style="colStyle">
+  <div class="col" :class="colClass" :style="colStyle" :phone="phoneClass">
     <div style="border: 1px solid red; height: 100px">
       <slot></slot>
     </div>
@@ -16,11 +16,33 @@ export default defineComponent({
     offset: {
       type: Number,
     },
+    phone: {
+      type: Object,
+      validator(value) {
+        let keys = Object.keys(value)
+        let valid = true
+        keys.forEach((key) => {
+          if (!['span', 'offset'].includes(key)) {
+            valid = false
+          }
+        })
+        return valid
+      },
+    },
   },
+
   setup(props, context) {
-    let { span, offset } = props
     const colClass = computed(() => {
-      return [span && `col-${span}`, offset && `offset-${offset}`]
+      let { span, offset, phone } = props
+      let phoneClass = []
+      if (phone) {
+        phoneClass = [`col-phone-${phone.span}`]
+      }
+      return [
+        span && `col-${span}`,
+        offset && `offset-${offset}`,
+        ...phoneClass,
+      ]
     })
 
     const gutter = inject('gutter')
@@ -50,6 +72,78 @@ export default defineComponent({
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
       margin-left: calc($n/24) * 100%;
+    }
+  }
+
+  // 响应式（注意一定要写在后面）
+  @media (max-width: 576px) {
+    $class-prefix: col-phone-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: calc($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-phone-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: calc($n/24) * 100%;
+      }
+    }
+  }
+  @media (min-width: 577px) and (max-width: 768px) {
+    $class-prefix: col-ipad-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: calc($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-ipad-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: calc($n/24) * 100%;
+      }
+    }
+  }
+  @media (min-width: 769px) and (max-width: 992px) {
+    $class-prefix: col-narrow-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: calc($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-narrow-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: calc($n/24) * 100%;
+      }
+    }
+  }
+  @media (min-width: 993px) and (max-width: 1200px) {
+    $class-prefix: col-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: calc($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: calc($n/24) * 100%;
+      }
+    }
+  }
+  @media (min-width: 1201px) {
+    $class-prefix: col-wide-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: calc($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-wide-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: calc($n/24) * 100%;
+      }
     }
   }
 }
