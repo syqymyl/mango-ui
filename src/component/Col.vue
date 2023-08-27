@@ -11,13 +11,8 @@
 </template>
 
 <script>
-export default {
-  name: 'Col',
-  data() {
-    return {
-      gutter: 0,
-    }
-  },
+import { defineComponent, inject } from 'vue'
+export default defineComponent({
   props: {
     span: {
       type: Number,
@@ -26,7 +21,13 @@ export default {
       type: Number,
     },
   },
-}
+  setup() {
+    const gutter = inject('gutter')
+    return {
+      gutter,
+    }
+  },
+})
 </script>
 
 <style lang="scss" scoped>

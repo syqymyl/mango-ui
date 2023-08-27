@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { onMounted } from 'vue'
+import { computed, provide } from 'vue'
 export default {
   name: 'Row',
   props: {
@@ -18,22 +18,11 @@ export default {
     },
   },
   setup(props, context) {
-    console.log(context.slots.default())
-    const defaults = context.slots.default()
-    defaults.forEach((vm) => {
-      vm.gutter = props.gutter
-    })
+    provide(
+      'gutter',
+      computed(() => props.gutter)
+    )
   },
-  // created() {
-  //   console.log('row created')
-  // },
-  // mounted() {
-  //   console.log('row mounted')
-  //   console.log(this.$refs)
-  //   this.$children.forEach((vm) => {
-  //     vm.gutter = this.gutter
-  //   })
-  // },
 }
 </script>
 
