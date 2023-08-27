@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="row"
-    :style="{ marginLeft: -gutter / 2 + 'px', marginRight: -gutter / 2 + 'px' }"
-  >
+  <div class="row" :style="rowStyle">
     <slot></slot>
   </div>
 </template>
@@ -18,10 +15,12 @@ export default {
     },
   },
   setup(props, context) {
-    provide(
-      'gutter',
-      computed(() => props.gutter)
-    )
+    const { gutter } = props
+    const rowStyle = computed(() => {
+      return { marginLeft: -gutter / 2 + 'px', marginRight: -gutter / 2 + 'px' }
+    })
+    provide('gutter', gutter)
+    return { rowStyle }
   },
 }
 </script>
