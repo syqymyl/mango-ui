@@ -26,7 +26,7 @@
         :ipad="{ span: 8 }"
         :narrow-pc="{ span: 4 }"
         :pc="{ span: 2 }"
-        :wide-pc="{ span: 2 }"
+        :wide-pc="{ span: 1 }"
         >1
       </Col>
       <Col
