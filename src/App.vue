@@ -21,20 +21,21 @@
     </Row> -->
     <Row gutter="20">
       <Col
-        span="1"
+        span="12"
         offset="2"
-        :phone="{ span: 12, offset: 0 }"
         :ipad="{ span: 8 }"
         :narrow-pc="{ span: 4 }"
         :pc="{ span: 2 }"
+        :wide-pc="{ span: 2 }"
         >1
       </Col>
       <Col
-        span="23"
+        span="12"
         :phone="{ span: 12 }"
         :ipad="{ span: 16 }"
         :narrow-pc="{ span: 20 }"
         :pc="{ span: 22 }"
+        :wide-pc="{ span: 23 }"
         >11</Col
       >
     </Row>

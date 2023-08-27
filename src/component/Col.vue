@@ -26,18 +26,19 @@ export default defineComponent({
     ipad: { type: Object, validator },
     narrowPc: { type: Object, validator },
     pc: { type: Object, validator },
+    widePc: { type: Object, validator },
   },
 
   setup(props, context) {
     const colClass = computed(() => {
-      let { span, offset, phone, ipad, narrowPc, pc } = props
+      let { span, offset, ipad, narrowPc, pc, widePc } = props
       return [
         span && `col-${span}`,
         offset && `offset-${offset}`,
-        ...(phone && [`col-phone-${phone.span}`]),
-        ...(ipad && [`col-ipad-${ipad.span}`]),
-        ...(narrowPc && [`col-narrow-pc-${narrowPc.span}`]),
-        ...(pc && [`col-pc-${pc.span}`]),
+        ...(ipad ? [`col-ipad-${ipad.span}`] : []),
+        ...(narrowPc ? [`col-narrow-pc-${narrowPc.span}`] : []),
+        ...(pc ? [`col-pc-${pc.span}`] : []),
+        ...(widePc ? [`col-wide-pc-${widePc.span}`] : []),
       ]
     })
 
@@ -73,20 +74,6 @@ export default defineComponent({
   }
 
   // 响应式（注意一定要写在后面）
-  @media (max-width: 576px) {
-    $class-prefix: col-phone-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        width: calc($n/24) * 100%;
-      }
-    }
-    $class-prefix: offset-phone-;
-    @for $n from 1 through 24 {
-      &.#{$class-prefix}#{$n} {
-        margin-left: calc($n/24) * 100%;
-      }
-    }
-  }
   @media (min-width: 577px) and (max-width: 768px) {
     $class-prefix: col-ipad-;
     @for $n from 1 through 24 {
@@ -123,6 +110,20 @@ export default defineComponent({
       }
     }
     $class-prefix: offset-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: calc($n/24) * 100%;
+      }
+    }
+  }
+  @media (min-width: 1201px) {
+    $class-prefix: col-wide-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: calc($n/24) * 100%;
+      }
+    }
+    $class-prefix: offset-wide-pc-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
         margin-left: calc($n/24) * 100%;
