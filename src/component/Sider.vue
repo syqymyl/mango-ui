@@ -4,7 +4,11 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  name: 'Sider',
+}
+</script>
 <style lang="scss" scoped>
 .sider {
 }
