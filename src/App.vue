@@ -1,11 +1,11 @@
 <template>
-  <Layout class="layout2">
-    <Header class="demo">Header</Header>
+  <Layout class="layout4">
+    <Sider class="demo">Sider</Sider>
     <Layout>
+      <Header class="demo">Header</Header>
       <Content class="demo">Content</Content>
-      <Sider class="demo">Sider</Sider>
+      <Footer class="demo">Footer</Footer>
     </Layout>
-    <Footer class="demo">Footer</Footer>
   </Layout>
 </template>
 
@@ -13,7 +13,7 @@
 import Layout from './component/Layout.vue'
 import Sider from './component/Sider.vue'
 import Header from './component/Header.vue'
-import Content from './component/Content'
+import Content from './component/Content.vue'
 import Footer from './component/Footer.vue'
 export default {
   name: 'App',
@@ -22,7 +22,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.layout2 {
+.layout4 {
   height: 100vh;
 }
 .demo {
