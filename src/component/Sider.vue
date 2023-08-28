@@ -9,7 +9,3 @@ export default {
   name: 'Sider',
 }
 </script>
-<style lang="scss" scoped>
-.sider {
-}
-</style>

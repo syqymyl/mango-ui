@@ -1,10 +1,26 @@
 <template>
-  <Layout class="layout4">
-    <Sider class="demo">Sider</Sider>
+  <!-- <Layout class="layout4">
+    <Header class="demo"></Header>
     <Layout>
-      <Header class="demo">Header</Header>
-      <Content class="demo">Content</Content>
-      <Footer class="demo">Footer</Footer>
+      <Sider class="demo"></Sider>
+      <Content class="demo"></Content>
+    </Layout>
+    <Footer class="demo"></Footer>
+  </Layout>
+  <Layout class="layout">
+    <Header class="demo"></Header>
+    <Layout>
+      <Sider class="demo"></Sider>
+      <Content class="demo"></Content>
+    </Layout>
+    <Footer class="demo"></Footer>
+  </Layout> -->
+  <Layout class="layout4">
+    <Sider class="demo"></Sider>
+    <Layout>
+      <Header class="demo"></Header>
+      <Content class="demo"></Content>
+      <Footer class="demo"></Footer>
     </Layout>
   </Layout>
 </template>
@@ -24,10 +40,13 @@ export default {
 <style lang="scss" scoped>
 .layout4 {
   height: 100vh;
+  background-color: #acacef;
 }
 .demo {
   border: 1px solid black;
-  background-color: #acacef;
   min-height: 100px;
+}
+.sider {
+  width: 200px;
 }
 </style>

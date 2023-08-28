@@ -4,8 +4,6 @@
   </div>
 </template>
 
-<script></script>
-
 <style lang="scss" scoped>
 .content {
   flex-grow: 1;
