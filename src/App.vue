@@ -1,14 +1,9 @@
 <template>
-  <!-- <Layout class="layout1">
-    <Header class="demo"></Header>
-    <Content class="demo"></Content>
-    <Footer class="demo"></Footer>
-  </Layout> -->
   <Layout class="layout2">
     <Header class="demo">Header</Header>
     <Layout>
-      <Sider class="demo">Sider</Sider>
       <Content class="demo">Content</Content>
+      <Sider class="demo">Sider</Sider>
     </Layout>
     <Footer class="demo">Footer</Footer>
   </Layout>
@@ -18,7 +13,7 @@
 import Layout from './component/Layout.vue'
 import Sider from './component/Sider.vue'
 import Header from './component/Header.vue'
-import Content from './component/Content.vue'
+import Content from './component/Content'
 import Footer from './component/Footer.vue'
 export default {
   name: 'App',
