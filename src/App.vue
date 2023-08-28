@@ -1,61 +1,30 @@
 <template>
-  <div>
-    <!-- <Row :gutter="20">
-      <Col>1</Col>
-      <Col>2</Col>
-    </Row>
-    <Row :gutter="20">
-      <Col>1</Col>
-      <Col>2</Col>
-      <Col>3</Col>
-    </Row>
-    <Row :gutter="20">
-      <Col>1</Col>
-      <Col>2</Col>
-      <Col>3</Col>
-      <Col>4</Col>
-    </Row>
-    <Row gutter="20">
-      <Col span="2">1</Col>
-      <Col span="22">11</Col>
-    </Row> -->
-    <Row gutter="20">
-      <Col
-        span="12"
-        offset="2"
-        :ipad="{ span: 8 }"
-        :narrow-pc="{ span: 4 }"
-        :pc="{ span: 2 }"
-        :wide-pc="{ span: 1 }"
-        >1
-      </Col>
-      <Col
-        span="12"
-        :phone="{ span: 12 }"
-        :ipad="{ span: 16 }"
-        :narrow-pc="{ span: 20 }"
-        :pc="{ span: 22 }"
-        :wide-pc="{ span: 23 }"
-        >11</Col
-      >
-    </Row>
-    <!-- <Row gutter="20">
-      <Col span="2">1</Col>
-      <Col span="20" offset="2">11</Col>
-    </Row>
-    <Row gutter="20">
-      <Col span="4">1</Col>
-      <Col span="4" offset="4">11</Col>
-      <Col span="6" offset="6">11</Col>
-    </Row> -->
-  </div>
+  <Layout class="layout1">
+    <Header class="demo"></Header>
+    <Content class="demo"></Content>
+    <Footer class="demo"></Footer>
+  </Layout>
 </template>
 
 <script>
-import Row from './component/Row.vue'
-import Col from './component/Col.vue'
+import Layout from './component/Layout.vue'
+import Sider from './component/Sider.vue'
+import Header from './component/Header.vue'
+import Content from './component/Content.vue'
+import Footer from './component/Footer.vue'
 export default {
   name: 'App',
-  components: { Row, Col },
+  components: { Layout, Sider, Header, Content, Footer },
 }
 </script>
+
+<style lang="scss" scoped>
+.layout1 {
+  height: 100vh;
+  > .demo {
+    border: 1px solid black;
+    background-color: #acacef;
+    min-height: 100px;
+  }
+}
+</style>
